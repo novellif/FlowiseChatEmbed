@@ -50,7 +50,7 @@ export const BotBubble = (props: Props) => {
       const response = await sendFileDownloadQuery({
         apiHost: props.apiHost,
         body: { question: '', fileName: fileAnnotation.fileName },
-        onRequest: props.onRequest
+        onRequest: props.onRequest,
       });
       const blob = new Blob([response.data]);
       const downloadUrl = window.URL.createObjectURL(blob);
@@ -86,12 +86,12 @@ export const BotBubble = (props: Props) => {
       const messages: MessageType[] = parsedDetails.chatHistory || [];
       const message = messages.find((msg) => msg.messageId === props.message.messageId);
       if (!message) return;
-      message.rating = rating
+      message.rating = rating;
       localStorage.setItem(`${props.chatflowid}_EXTERNAL`, JSON.stringify({ ...parsedDetails, chatHistory: messages }));
     } catch (e) {
       return;
     }
-  }
+  };
 
   const onThumbsUpClick = async () => {
     if (rating() === '') {
@@ -106,7 +106,7 @@ export const BotBubble = (props: Props) => {
         chatflowid: props.chatflowid,
         apiHost: props.apiHost,
         body,
-        onRequest: props.onRequest
+        onRequest: props.onRequest,
       });
 
       if (result.data) {
@@ -136,7 +136,7 @@ export const BotBubble = (props: Props) => {
         chatflowid: props.chatflowid,
         apiHost: props.apiHost,
         body,
-        onRequest: props.onRequest
+        onRequest: props.onRequest,
       });
 
       if (result.data) {
@@ -161,7 +161,7 @@ export const BotBubble = (props: Props) => {
       id: feedbackId(),
       apiHost: props.apiHost,
       body,
-      onRequest: props.onRequest
+      onRequest: props.onRequest,
     });
 
     if (result.data) {

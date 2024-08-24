@@ -9,12 +9,12 @@ export const isNotEmpty = (value: string | undefined | null): value is string =>
 export const sendRequest = async <ResponseData>(
   params:
     | {
-      url: string;
-      method: string;
-      body?: Record<string, unknown> | FormData;
-      type?: string;
-      onRequest?: (request: RequestInit) => Promise<void>
-    }
+        url: string;
+        method: string;
+        body?: Record<string, unknown> | FormData;
+        type?: string;
+        onRequest?: (request: RequestInit) => Promise<void>;
+      }
     | string,
 ): Promise<{ data?: ResponseData; error?: Error }> => {
   try {
@@ -26,8 +26,8 @@ export const sendRequest = async <ResponseData>(
       headers:
         typeof params !== 'string' && isDefined(params.body)
           ? {
-            'Content-Type': 'application/json',
-          }
+              'Content-Type': 'application/json',
+            }
           : undefined,
       body: typeof params !== 'string' && isDefined(params.body) ? JSON.stringify(params.body) : undefined,
     };
@@ -35,7 +35,7 @@ export const sendRequest = async <ResponseData>(
     if (typeof params !== 'string' && params.onRequest) {
       await params.onRequest(requestInfo);
     }
-    
+
     const response = await fetch(url, requestInfo);
 
     let data: any;

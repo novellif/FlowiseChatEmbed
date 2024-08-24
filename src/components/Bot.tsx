@@ -11,7 +11,7 @@ import { BotMessageTheme, FooterTheme, TextInputTheme, UserMessageTheme, Feedbac
 import { Badge } from './Badge';
 import socketIOClient from 'socket.io-client';
 import { Popup } from '@/features/popup';
-import { Avatar } from '@/components/avatars/Avatar';
+import { Avatar, AvatarHeader } from '@/components/avatars/Avatar';
 import { DeleteButton, SendButton } from '@/components/buttons/SendButton';
 import { CircleDotIcon, TrashIcon } from './icons';
 import { CancelButton } from './buttons/CancelButton';
@@ -995,7 +995,7 @@ export const Bot = (botProps: BotProps & { class?: string }) => {
             <Show when={props.titleAvatarSrc}>
               <>
                 <div style={{ width: '15px' }} />
-                <Avatar initialAvatarSrc={props.titleAvatarSrc} />
+                <AvatarHeader initialAvatarSrc={props.titleAvatarSrc} />
               </>
             </Show>
             <Show when={props.title}>
